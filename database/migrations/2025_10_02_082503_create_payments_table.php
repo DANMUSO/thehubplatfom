@@ -38,7 +38,7 @@ return new class extends Migration
             $table->enum('billing_cycle', ['monthly', 'yearly']);
             $table->boolean('is_active')->default(true);
             $table->timestamp('started_at');
-            $table->timestamp('expires_at');
+            $table->timestamp('expires_at')->nullable();
             $table->timestamp('cancelled_at')->nullable();
             $table->timestamps();
             
