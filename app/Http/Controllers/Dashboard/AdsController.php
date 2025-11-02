@@ -72,7 +72,7 @@ class AdsController extends Controller
      public function realestate(){
         // Get only active posts, ordered by newest first
         $posts = Post::orderBy('created_at', 'desc')
-                    ->where('category', 'realestate')
+                    ->where('category', 'real-estate')
                     ->where('status', 'active')
                     ->get();
         
@@ -97,6 +97,15 @@ class AdsController extends Controller
                     ->get();
         
         return view('others', compact('posts'));
+
+    }
+     public function welcome(){
+        // Get only active posts, ordered by newest first
+        $posts = Post::orderBy('created_at', 'desc')
+                    ->where('status', 'active')
+                    ->get();
+        
+        return view('welcome', compact('posts'));
 
     }
     

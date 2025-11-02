@@ -3,11 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request; // Add this import
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
+Route::get('/', [App\Http\Controllers\Dashboard\AdsController::class, 'welcome']);
 Route::get('/vehicles', [App\Http\Controllers\Dashboard\AdsController::class, 'vehicles'])->name('vehicles');
 Route::get('/realestate', [App\Http\Controllers\Dashboard\AdsController::class, 'realestate'])->name('realestate');
 Route::get('/phones', [App\Http\Controllers\Dashboard\AdsController::class, 'phones'])->name('phones');
