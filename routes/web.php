@@ -50,13 +50,14 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/mapview', [App\Http\Controllers\Dashboard\LocationController::class, 'ads'])
         ->name('mapview');
+      Route::get('/locations/alldata', [App\Http\Controllers\Dashboard\LocationController::class, 'getAllData']);   
 Route::middleware(['auth'])->group(function () {
  
     //Locations Management
     Route::get('/api/locations', [App\Http\Controllers\Dashboard\LocationController::class, 'locations'])->name('locations.index');
     Route::get('/locations', [App\Http\Controllers\Dashboard\LocationController::class, 'index'])->name('locations.index');
     Route::get('/locations/data', [App\Http\Controllers\Dashboard\LocationController::class, 'getData']);
-     Route::get('/locations/alldata', [App\Http\Controllers\Dashboard\LocationController::class, 'getAllData']);
+    
     Route::get('/locations/stats', [App\Http\Controllers\Dashboard\LocationController::class, 'getStats']);
     Route::post('/locations', [App\Http\Controllers\Dashboard\LocationController::class, 'store']);
     Route::post('/locations/{id}', [App\Http\Controllers\Dashboard\LocationController::class, 'update']);
