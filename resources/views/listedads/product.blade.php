@@ -1,16 +1,7 @@
 <x-ads-layout>
 
- <section class="s-space-bottom-full bg-accent-shadow-body" style="padding-top: 120px;">
-            <div class="container">
-                <div class="breadcrumbs-area">
-                    <ul>
-                        <li><a href="{{ url('/') }}">Home</a> -</li>
-                        <li><a href="{{ url('/' . $post->category) }}">{{ ucfirst($post->category) }}</a> -</li>
-                        <li class="active">{{ Str::limit($post->title, 30) }}</li>
-                    </ul>
-                </div>
-            </div>
-             <div class="container" style="margin-top: 70px;">
+  <section class="s-space-bottom-full bg-accent-shadow-body" style="padding-top: 20px;">
+    <div class="container" style="margin-top: 0; padding-top: 10px;">
                 <div class="row">
                     <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
                         <div class="gradient-wrapper item-mb">
@@ -18,40 +9,39 @@
                                 <h2>{{ $post->title }}</h2>
                             </div>
                             <div class="gradient-padding reduce-padding">
-                                <!-- HTML Structure -->
-                            <div class="single-product-img-layout1 d-flex mb-50">
-                                <!-- Thumbnail Navigation -->
-                                <ul class="nav tab-nav tab-nav-list">
-                                    @foreach($post->photos as $index => $photo)
-                                    <li class="nav-item">
-                                        <a class="{{ $index === 0 ? 'active' : '' }}" 
-                                        href="#related{{ $index + 1 }}" 
-                                        data-toggle="tab" 
-                                        aria-expanded="{{ $index === 0 ? 'true' : 'false' }}">
-                                            <img alt="Thumbnail {{ $index + 1 }}" 
-                                                src="{{ $photo }}" 
-                                                loading="lazy">
-                                        </a>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                                
-                                <!-- Main Image Display -->
-                                <div class="tab-content">
-                                    <span class="custom-price-tag">KSH {{ number_format($post->price, 0) }}</span>
-                                    
-                                    @foreach($post->photos as $index => $photo)
-                                    <div class="tab-pane fade {{ $index === 0 ? 'active show' : '' }}" 
-                                        id="related{{ $index + 1 }}">
-                                        <a href="{{ $photo }}" class="zoom ex1">
-                                            <img alt="{{ $post->title }} - Image {{ $index + 1 }}" 
-                                                src="{{ $photo }}" 
-                                                loading="{{ $index === 0 ? 'eager' : 'lazy' }}">
-                                        </a>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
+                            <div class="single-product-img-layout1 mb-50">
+    <!-- Main Image Display -->
+    <div class="tab-content">
+        <span class="custom-price-tag">KSH {{ number_format($post->price, 0) }}</span>
+        
+        @foreach($post->photos as $index => $photo)
+        <div class="tab-pane fade {{ $index === 0 ? 'active show' : '' }}" 
+            id="related{{ $index + 1 }}">
+            <a href="{{ $photo }}" class="zoom ex1">
+                <img alt="{{ $post->title }} - Image {{ $index + 1 }}" 
+                    src="{{ $photo }}" 
+                    loading="{{ $index === 0 ? 'eager' : 'lazy' }}">
+            </a>
+        </div>
+        @endforeach
+    </div>
+    
+    <!-- Thumbnail Navigation (NOW BELOW) -->
+    <ul class="nav tab-nav tab-nav-list">
+        @foreach($post->photos as $index => $photo)
+        <li class="nav-item">
+            <a class="{{ $index === 0 ? 'active' : '' }}" 
+            href="#related{{ $index + 1 }}" 
+            data-toggle="tab" 
+            aria-expanded="{{ $index === 0 ? 'true' : 'false' }}">
+                <img alt="Thumbnail {{ $index + 1 }}" 
+                    src="{{ $photo }}" 
+                    loading="lazy">
+            </a>
+        </li>
+        @endforeach
+    </ul>
+</div>
                                 <div class="section-title-left-dark child-size-xl title-bar item-mb">
                                     <h3>Product Details:</h3>
                                     <p class="text-medium-dark">
@@ -388,142 +378,170 @@
             </div>
         </section>
         <style>
-/* Image Gallery Styling */
+/* Image Gallery Styling - FORCE HORIZONTAL LAYOUT */
 .single-product-img-layout1 {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 50px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    margin-bottom: 50px !important;
 }
 
-/* Thumbnail List - Vertical Scroll */
+/* Thumbnail List - FORCE HORIZONTAL */
 .tab-nav-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-height: 500px;
-    overflow-y: auto;
-    padding-right: 10px;
-    margin: 0;
-    list-style: none;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding-bottom: 10px !important;
+    margin: 0 !important;
+    margin-right: 0 !important;
+    list-style: none !important;
+    align-items: center !important;
 }
 
-/* Custom Scrollbar */
+/* Override external stylesheet rules */
+.single-product-img-layout1 ul.tab-nav-list {
+    margin-right: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+}
+
+/* Custom Scrollbar - Horizontal */
 .tab-nav-list::-webkit-scrollbar {
-    width: 6px;
+    height: 6px !important;
+    width: auto !important;
 }
 
 .tab-nav-list::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 3px;
+    background: #f1f1f1 !important;
+    border-radius: 3px !important;
 }
 
 .tab-nav-list::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 3px;
+    background: #888 !important;
+    border-radius: 3px !important;
 }
 
 .tab-nav-list::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #555 !important;
 }
 
-/* Thumbnail Items */
+/* Thumbnail Items - FORCE INLINE */
 .tab-nav-list .nav-item {
-    margin: 0;
+    margin: 0 !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0 !important;
+    display: inline-block !important;
+    float: none !important;
 }
 
 .tab-nav-list .nav-item a {
-    display: block;
-    width: 100px;
-    height: 80px;
-    border: 2px solid #e5e7eb;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    position: relative;
+    display: block !important;
+    width: 100px !important;
+    height: 80px !important;
+    border: 2px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
 }
 
 .tab-nav-list .nav-item a:hover,
 .tab-nav-list .nav-item a.active {
-    border-color: #3b82f6;
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+    border-color: #3b82f6 !important;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3) !important;
 }
 
 .tab-nav-list .nav-item a img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
 }
 
 /* Main Image Container */
 .tab-content {
-    flex: 1;
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #f8f9fa;
+    width: 100% !important;
+    position: relative !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    background: #f8f9fa !important;
 }
 
 .tab-content .tab-pane {
-    position: relative;
+    position: relative !important;
 }
 
 .tab-content .tab-pane a {
-    display: block;
-    width: 100%;
-    height: 500px;
+    display: block !important;
+    width: 100% !important;
+    height: 500px !important;
 }
 
 .tab-content .tab-pane img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-    background: #fff;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    background: #fff !important;
 }
 
 /* Price Tag */
 .custom-price-tag {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #10b981, #059669);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 25px;
-    font-size: 24px;
-    font-weight: 700;
-    z-index: 10;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: white !important;
+    padding: 12px 24px !important;
+    border-radius: 25px !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    z-index: 10 !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4) !important;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .single-product-img-layout1 {
-        flex-direction: column-reverse;
-    }
-    
-    .tab-nav-list {
-        flex-direction: row;
-        max-height: none;
-        overflow-x: auto;
-        overflow-y: hidden;
-        padding-right: 0;
-        padding-bottom: 10px;
-    }
-    
     .tab-nav-list .nav-item a {
-        width: 80px;
-        height: 60px;
+        width: 80px !important;
+        height: 60px !important;
     }
     
     .tab-content .tab-pane a {
-        height: 350px;
+        height: 350px !important;
     }
     
     .custom-price-tag {
-        font-size: 18px;
-        padding: 8px 16px;
+        font-size: 18px !important;
+        padding: 8px 16px !important;
+    }
+}
+
+/* Override any media query rules from external stylesheet */
+@media only screen and (max-width: 767px) {
+    .single-product-img-layout1 ul.tab-nav-list {
+        width: 100% !important;
+        flex-direction: row !important;
+    }
+    
+    .single-product-img-layout1 ul.tab-nav-list li {
+        width: auto !important;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .single-product-img-layout1 ul.tab-nav-list {
+        width: 100% !important;
+        flex-direction: row !important;
+    }
+    
+    .single-product-img-layout1 ul.tab-nav-list li {
+        width: auto !important;
     }
 }
 </style>

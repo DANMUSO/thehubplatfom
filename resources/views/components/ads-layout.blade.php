@@ -129,7 +129,16 @@ document.addEventListener('click', function(e) {
         margin-bottom: 15px !important;
     }
 
-   
+   /* Desktop spacing for content */
+@media (min-width: 992px) {
+    .s-space-bottom-full {
+        padding-top: 80px !important;
+    }
+    
+    .s-space-bottom-full .container {
+        padding-top: 150px !important;
+    }
+}
   /* ==========================================
    PROFESSIONAL MOBILE HEADER - COMPLETE REDESIGN
    ========================================== */
