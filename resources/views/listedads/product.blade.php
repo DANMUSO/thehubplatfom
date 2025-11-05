@@ -44,10 +44,7 @@
 </div>
                                 <div class="section-title-left-dark child-size-xl title-bar item-mb">
                                     <h3>Product Details:</h3>
-                                    <p class="text-medium-dark">
-                                          {{ $post->description }}
                                     
-                                    </p>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-8 col-md-7 col-sm-12 col-12">
