@@ -77,83 +77,570 @@ document.addEventListener('click', function(e) {
 </script>
 <style>
     .social-login .btn {
-    font-weight: 500;
-    padding: 12px 20px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
+        font-weight: 500;
+        padding: 12px 20px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
 
-.social-login .btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+    .social-login .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
 
-.social-login .btn i {
-    margin-right: 8px;
-}
-/* Force override all spacing */
-.compact-container {
-    margin: 0 !important;
-    padding: 0 !important;
-}
+    .social-login .btn i {
+        margin-right: 8px;
+    }
 
-.compact-container .row {
-    margin-left: -10px !important;
-    margin-right: -10px !important;
-    margin-bottom: 0 !important;
-}
+    /* Force override all spacing */
+    .compact-container {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
 
-.compact-container [class*="col-"] {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    margin-bottom: 20px !important;
-}
+    .compact-container .row {
+        margin-left: -10px !important;
+        margin-right: -10px !important;
+        margin-bottom: 0 !important;
+    }
 
-/* Override the inline styles directly */
-.compact-container .product-box div[style] {
-    max-width: 250px !important;
-    margin: 0 auto !important;
-}
+    .compact-container [class*="col-"] {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        margin-bottom: 20px !important;
+    }
 
-.compact-container .product-box div[style*="padding: 16px"] {
-    padding: 12px !important;
-}
+    /* Override the inline styles directly */
+    .compact-container .product-box div[style] {
+        max-width: 250px !important;
+        margin: 0 auto !important;
+    }
 
-.compact-container .product-box div[style*="height: 180px"] {
-    height: 160px !important;
-}
+    .compact-container .product-box div[style*="padding: 16px"] {
+        padding: 12px !important;
+    }
 
-/* Reduce card gaps */
-.compact-container .item-mb {
-    margin-bottom: 15px !important;
-}
-/* Add this to your <style> section */
-@media (max-width: 768px) {
-    /* Hide desktop categories on mobile */
+    .compact-container .product-box div[style*="height: 180px"] {
+        height: 160px !important;
+    }
+
+    /* Reduce card gaps */
+    .compact-container .item-mb {
+        margin-bottom: 15px !important;
+    }
+
+    /* ==========================================
+       MOBILE-ONLY RESPONSIVE REDESIGN 
+       ========================================== */
+
+  /* ==========================================
+   PROFESSIONAL MOBILE HEADER - COMPLETE REDESIGN
+   ========================================== */
+
+@media (max-width: 991px) {
+    
+    /* Hide desktop categories */
     .category-section-desktop {
         display: none !important;
     }
     
-    /* Ensure mobile menu appears first */
+    /* ===== TOP CONTACT BAR ===== */
+    .header-top-bar {
+        background: #00897b;
+        padding: 0;
+    }
+
+    .header-top-bar .container {
+        padding: 10px 15px;
+        max-width: 100%;
+    }
+    
+    .header-top-bar .row {
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    
+    /* Left side - Contact info */
+    .header-top-bar .col-6,
+    .header-top-bar .col-lg-6,
+    .header-top-bar .col-md-6,
+    .header-top-bar .col-sm-6 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        padding: 0 5px !important;
+    }
+    
+    .top-bar-left {
+        text-align: left !important;
+    }
+    
+    .top-bar-left .cp-default-btn {
+        display: none !important;
+    }
+
+    .top-bar-left p {
+        display: block !important;
+        font-size: 11px !important;
+        margin: 0 !important;
+        color: #fff;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .top-bar-left p i {
+        margin-right: 5px;
+        font-size: 12px;
+    }
+    
+    /* Right side - Login & Live Chat */
+    .top-bar-right {
+        text-align: right !important;
+        width: 100%;
+    }
+    
+    .top-bar-right ul {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 8px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .top-bar-right ul li {
+        display: inline-block;
+        margin: 0;
+    }
+    
+    .top-bar-right .login-btn {
+        font-size: 11px !important;
+        padding: 6px 12px !important;
+        white-space: nowrap;
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: #fff !important;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .top-bar-right .login-btn:hover {
+        background: rgba(255,255,255,0.3);
+        border-color: rgba(255,255,255,0.4);
+    }
+
+    .top-bar-right .login-btn i {
+        margin-right: 5px;
+        font-size: 12px;
+    }
+    
+    /* Show live chat */
+    .top-bar-right .hidden-mb {
+        display: inline-block !important;
+    }
+    
+    /* ===== MAIN HEADER WITH LOGO ===== */
+    .main-menu-area {
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .main-menu-area .container {
+        padding: 12px 15px;
+        max-width: 100%;
+    }
+    
+    .main-menu-area .row {
+        margin: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    
+    /* Logo column - Make it visible and centered */
+    .main-menu-area .col-lg-2,
+    .main-menu-area .col-md-2,
+    .main-menu-area .col-sm-3 {
+        flex: 1 1 auto !important;
+        max-width: none !important;
+        padding: 0 10px !important;
+        order: 2 !important;
+        display: block !important;
+    }
+    
+    /* Specifically target the logo column to ensure it shows */
+    .main-menu-area .row > .col-lg-2:first-child,
+    .main-menu-area .row > .col-md-2:first-child,
+    .main-menu-area .row > .col-sm-3:first-child {
+        order: 1 !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
+        padding: 0 5px !important;
+    }
+    
+    .logo-area {
+        text-align: center !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        position: relative !important;
+        z-index: 10 !important;
+    }
+    
+    .logo-area a {
+        display: inline-block !important;
+    }
+
+    .logo-area img {
+        max-width: 110px !important;
+        height: auto !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Hide desktop nav */
+    .main-menu-area .col-lg-8,
+    .main-menu-area .col-md-8,
+    .main-menu-area .col-sm-6 {
+        display: none !important;
+    }
+    
+    /* Post Ad button - RIGHT */
+    .main-menu-area .text-right {
+        flex: 0 0 auto !important;
+        max-width: none !important;
+        text-align: right !important;
+        padding: 0 !important;
+        order: 3;
+    }
+    
+    .main-menu-area .cp-default-btn {
+        font-size: 11px !important;
+        padding: 8px 14px !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        background: #ffa726;
+        color: #fff !important;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(255, 167, 38, 0.3);
+    }
+
+    .main-menu-area .cp-default-btn:hover {
+        background: #fb8c00;
+        transform: translateY(-1px);
+        box-shadow: 0 3px 8px rgba(255, 167, 38, 0.4);
+    }
+    
+    /* ===== HAMBURGER MENU ICON ===== */
     .mobile-menu-area {
-        order: -1;
+        background: transparent;
+        padding: 0;
+        border: none;
+        position: static;
+    }
+
+    .mobile-menu-area .container {
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .mobile-menu-area .row {
+        margin: 0;
+    }
+
+    .mobile-menu-area .mobile-menu {
+        background: #fff;
+    }
+    
+    .mean-container {
+        position: relative;
+        width: 100%;
+    }
+    
+    .mean-container .meanmenu-reveal {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: transparent !important;
+        color: #333 !important;
+        padding: 8px !important;
+        border: none !important;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+    }
+
+    .mean-container .meanmenu-reveal:hover {
+        background: #f5f5f5 !important;
+    }
+
+    .mean-container .meanmenu-reveal span {
+        background: #333 !important;
+        height: 2px;
+        width: 20px;
+        margin: 2px 0;
+        border-radius: 2px;
+        display: block;
+        transition: all 0.3s ease;
+    }
+    
+    .mean-container .mean-nav {
+        background: #fff;
+        margin-top: 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    /* ===== MOBILE MENU ITEMS ===== */
+    .mobile-menu nav ul {
+        background: #fff;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .mobile-menu nav ul li {
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .mobile-menu nav ul li a {
+        padding: 14px 20px;
+        font-size: 14px;
+        color: #333;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        display: block;
+        text-decoration: none;
+    }
+
+    .mobile-menu nav ul li a:hover {
+        background: linear-gradient(90deg, rgba(0, 137, 123, 0.08) 0%, transparent 100%);
+        color: #00897b;
+        padding-left: 25px;
+    }
+
+    /* Submenu */
+    .mobile-menu nav ul ul {
+        background: #f8f9fa;
+    }
+    
+    .mobile-menu nav ul ul li a {
+        padding-left: 35px;
+        font-size: 13px;
+        font-weight: 400;
+        color: #555;
+    }
+
+    .mobile-menu nav ul ul li a:hover {
+        padding-left: 40px;
+        background: #f0f0f0;
+    }
+    
+    /* ===== SEARCH SECTION ===== */
+    .search-layout3.d-lg-none {
+        display: block !important;
+        margin: 0;
+        padding: 0;
+        background: #f8f9fa;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .search-layout3-holder {
+        padding: 0;
+    }
+
+    .search-layout3-inner {
+        padding: 16px !important;
+        background: #fff !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+    
+    .search-layout3 .row {
+        margin: 0 -6px;
+    }
+    
+    .search-layout3 [class*="col-"] {
+        padding: 0 6px;
+    }
+    
+    .search-layout3 .form-group {
+        margin-bottom: 10px;
+    }
+
+    .search-layout3 .select2,
+    .search-layout3 input[type="text"] {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        background: #fafafa;
+        transition: all 0.3s ease;
+        font-family: inherit;
+    }
+
+    .search-layout3 .select2:focus,
+    .search-layout3 input[type="text"]:focus {
+        border-color: #00897b;
+        background: #fff;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 137, 123, 0.1);
+    }
+    
+    .search-layout3 .cp-search-btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #00897b;
+        color: #fff;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0, 137, 123, 0.25);
+        border: none;
+    }
+
+    .search-layout3 .cp-search-btn:hover {
+        background: #00695c;
+        transform: translateY(-1px);
+        box-shadow: 0 3px 8px rgba(0, 137, 123, 0.35);
+    }
+
+    .search-layout3 .cp-search-btn i {
+        margin-right: 6px;
+    }
+
+    /* Fix layout */
+    .header-style2.header-fixed {
+        position: relative;
+    }
+
+    #header-three {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-top-bar {
+        order: 1;
+    }
+
+    .main-menu-area {
+        order: 2;
+        position: relative;
     }
 }
-</style>
-</head>
 
-<body>
- 
-<style>
-@keyframes slideUp {
+/* ===== SMALLER SCREENS ===== */
+@media (max-width: 576px) {
+    .top-bar-left p {
+        font-size: 10px !important;
+    }
+    
+    .logo-area img {
+        max-width: 95px !important;
+    }
+    
+    .main-menu-area .cp-default-btn {
+        font-size: 10px !important;
+        padding: 7px 12px !important;
+    }
+    
+    .top-bar-right .login-btn {
+        font-size: 10px !important;
+        padding: 5px 10px !important;
+    }
+
+    .search-layout3-inner {
+        padding: 14px !important;
+    }
+    
+    .search-layout3 .select2,
+    .search-layout3 input[type="text"] {
+        font-size: 13px;
+        padding: 11px 12px;
+    }
+
+    .search-layout3 .cp-search-btn {
+        padding: 11px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 400px) {
+    .top-bar-left p {
+        font-size: 9px !important;
+    }
+    
+    .logo-area img {
+        max-width: 85px !important;
+    }
+
+    .main-menu-area .cp-default-btn {
+        font-size: 9px !important;
+        padding: 6px 10px !important;
+    }
+
+    .top-bar-right ul {
+        gap: 6px;
+    }
+
+    .top-bar-right .login-btn {
+        font-size: 9px !important;
+        padding: 5px 8px !important;
+    }
+    
+    .top-bar-right .login-btn i {
+        display: none;
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideInMenu {
     from {
         opacity: 0;
-        transform: translateY(30px) scale(0.95);
+        transform: translateX(-20px);
     }
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateX(0);
     }
+}
+
+.mean-container .mean-nav {
+    animation: slideInMenu 0.3s ease;
 }
 </style>
     <!--[if lt IE 8]>
@@ -174,7 +661,7 @@ document.addEventListener('click', function(e) {
                                 <div class="top-bar-left">
                                     <a href="{{url('postmgt')}}" class="cp-default-btn d-lg-none">Post Your Ad</a>
                                     <p class="d-none d-lg-block">
-                                        <i class="fa fa-life-ring" aria-hidden="true"></i>Have any questions? 078 199990 or mail@TheHub
+                                       +25478 199990 or mail@TheHub
                                     </p>
                                 </div>
                             </div>
@@ -272,28 +759,34 @@ document.addEventListener('click', function(e) {
 <div class="mobile-menu-area">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-lg-2 col-md-2 col-sm-3">
+                                        <img src="{{asset('Platform/img/logo-dark.png')}}" alt="logo">
+                                
+                            </div>
+            <div class="col-md-10">
                 <div class="mobile-menu">
                     <nav id="dropdown">
                          <ul>
                             <!-- Add Categories Dropdown Here -->
                             <li><a href="#">Categories</a>
                                 <ul>
-                                    <li><a href="{{url('/category/electronics')}}">Electronics</a></li>
-                                    <li><a href="{{url('/category/fashion')}}">Fashion</a></li>
-                                    <li><a href="{{url('/category/home')}}">Home & Garden</a></li>
-                                    <li><a href="{{url('/category/vehicles')}}">Vehicles</a></li>
-                                    <li><a href="{{url('/category/jobs')}}">Jobs</a></li>
-                                    <li><a href="{{url('/category/services')}}">Services</a></li>
+                                    <li>
+                                        <a href="{{url('electronics')}}"><img src="{{asset('Platform/img/product/electronics.png')}}" alt="category" class="img-fluid">Electronics<span>(50)</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('vehicles')}}"><img src="{{asset('Platform/img/product/ctg3.png')}}" alt="category" class="img-fluid">Car &amp; Vehicles<span>(50)</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url('realestate')}}"><img src="{{asset('Platform/img/product/ctg7.png')}}" alt="category" class="img-fluid">Real Estate<span>(90)</span></a>
+                                    </li>
+                                     <li>
+                                        <a href="{{url('phones')}}"><img src="{{asset('Platform/img/product/ctg1.png')}}" alt="category" class="img-fluid">Phones<span>(90)</span></a>
+                                    </li>
                                 </ul>
                             </li>
+                                 <li><a href="{{url('/mapview')}}">View All in Map</a></li>
                             
-                            <li class="active"><a href="{{url('/')}}">Home</a></li>
-                            <li><a href="{{url('/')}}">Who We Are</a></li>
-                            <li><a href="{{url('/')}}">How It Works?</a></li>
-                            <li><a href="{{url('/')}}">Features</a></li>
-                            <li><a href="{{url('/')}}">Contact</a></li>
-                            <li><a href="{{url('/mapview')}}">View All in Map</a></li>
+                       
                         </ul>
                     </nav>
                 </div>

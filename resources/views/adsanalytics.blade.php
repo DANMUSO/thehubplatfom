@@ -429,7 +429,7 @@
 /* Charts Row */
 .charts-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Reduced from 500px */
     gap: 20px;
     margin-bottom: 30px;
 }
@@ -793,16 +793,16 @@
 @media (max-width: 768px) {
     .page-header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
     }
     
     .header-actions {
+        flex-direction: row; /* Keep horizontal on mobile */
         width: 100%;
-        justify-content: space-between;
     }
     
     .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+         grid-template-columns: repeat(2, 1fr);
     }
     
     .table-responsive {
@@ -813,12 +813,12 @@
     .performance-table td {
         padding: 10px;
     }
-    
-    .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
+   .section-header {
+    flex-direction: row; /* Keep horizontal */
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
     .table-actions {
         width: 100%;
         flex-direction: column;
@@ -834,6 +834,22 @@
 }
 
 @media (max-width: 480px) {
+    .period-select {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+    .btn-export {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    .btn-export svg {
+        width: 14px;
+        height: 14px;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+    }
     .page-header h1 {
         font-size: 1.5rem;
     }
