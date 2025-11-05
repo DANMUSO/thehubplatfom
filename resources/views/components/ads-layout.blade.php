@@ -129,10 +129,7 @@ document.addEventListener('click', function(e) {
         margin-bottom: 15px !important;
     }
 
-    /* ==========================================
-       MOBILE-ONLY RESPONSIVE REDESIGN 
-       ========================================== */
-
+   
   /* ==========================================
    PROFESSIONAL MOBILE HEADER - COMPLETE REDESIGN
    ========================================== */
@@ -642,135 +639,246 @@ document.addEventListener('click', function(e) {
 .mean-container .mean-nav {
     animation: slideInMenu 0.3s ease;
 }
-/* Mobile-Friendly Popup Styles */
+/* Mobile-Friendly Popup - FINAL FIXED VERSION */
 @media (max-width: 768px) {
-    /* Popup overlay adjustments */
-    #promo-popup-overlay > div {
-        max-width: 95% !important;
-        margin: 0 10px;
-        max-height: 90vh;
-        overflow-y: auto;
+    /* Popup overlay - SCROLLABLE */
+    #promo-popup-overlay {
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        align-items: flex-start !important;
+        padding: 20px 0 !important;
     }
     
-    /* Change to vertical stacked layout */
+    /* Popup container - centered card */
+    #promo-popup-overlay > div {
+        max-width: 95% !important;
+        width: 95% !important;
+        margin: 20px auto !important;
+        max-height: none !important;
+        transform: none !important;
+        animation: none !important;
+        border-radius: 12px !important;
+        position: relative !important;
+    }
+    
+    /* Vertical stack */
     #promo-popup-overlay > div > div {
         flex-direction: column !important;
         min-height: auto !important;
     }
     
-    /* Left side (green section) - full width on mobile */
+    /* Green header section */
     #promo-popup-overlay > div > div > div:first-child {
-        flex: 1 1 auto !important;
+        flex: none !important;
         width: 100% !important;
-        padding: 30px 25px !important;
+        padding: 24px 20px 20px 20px !important;
     }
     
-    /* Adjust icon size */
+    /* Hide icon on mobile */
     #promo-popup-overlay > div > div > div:first-child > div:first-child {
-        width: 40px !important;
-        height: 40px !important;
-        margin: 0 0 16px 0 !important;
+        display: none !important;
     }
     
-    #promo-popup-overlay > div > div > div:first-child > div:first-child svg {
-        width: 20px !important;
-        height: 20px !important;
-    }
-    
-    /* Heading adjustments */
+    /* Green section heading */
     #promo-popup-overlay > div > div > div:first-child h2 {
-        font-size: 18px !important;
+        font-size: 17px !important;
+        margin: 0 0 8px 0 !important;
+        line-height: 1.3 !important;
     }
     
-    #promo-popup-overlay > div > div > div:first-child p {
+    #promo-popup-overlay > div > div > div:first-child > p {
         font-size: 13px !important;
+        margin: 0 !important;
+        opacity: 0.95 !important;
     }
     
-    /* Trust indicators */
+    /* Trust indicators container */
     #promo-popup-overlay > div > div > div:first-child > div:last-child {
-        margin-top: 20px !important;
+        margin-top: 16px !important;
         padding-top: 16px !important;
+        display: block !important;
     }
     
-    /* Right side (content) */
+    /* Rating row - HORIZONTAL STARS */
+    #promo-popup-overlay > div > div > div:first-child > div:last-child > div {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-bottom: 8px !important;
+        flex-wrap: nowrap !important;
+    }
+    
+    /* Stars container - FORCE HORIZONTAL */
+    #promo-popup-overlay > div > div > div:first-child > div:last-child > div > div {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 3px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* Individual stars */
+    #promo-popup-overlay > div > div > div:first-child > div:last-child > div > div span {
+        font-size: 16px !important;
+        line-height: 1 !important;
+        display: inline-block !important;
+    }
+    
+    /* Rating text */
+    #promo-popup-overlay > div > div > div:first-child > div:last-child > div > span {
+        font-size: 13px !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* Trust text */
+    #promo-popup-overlay > div > div > div:first-child > div:last-child > p {
+        font-size: 12px !important;
+        margin: 0 !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* White content section */
     #promo-popup-overlay > div > div > div:last-child {
-        padding: 30px 25px !important;
+        padding: 24px 20px 28px 20px !important;
     }
     
+    /* Main heading */
     #promo-popup-overlay > div > div > div:last-child h3 {
-        font-size: 18px !important;
-        margin-bottom: 10px !important;
+        font-size: 19px !important;
+        margin: 0 0 10px 0 !important;
+        line-height: 1.3 !important;
     }
     
+    /* Description */
     #promo-popup-overlay > div > div > div:last-child > p:first-of-type {
         font-size: 14px !important;
-        margin-bottom: 14px !important;
+        margin: 0 0 18px 0 !important;
+        line-height: 1.5 !important;
+        color: #64748b !important;
     }
     
-    /* Benefits grid - single column on mobile */
+    /* Benefits grid - single column */
     #promo-popup-overlay > div > div > div:last-child > div {
+        display: grid !important;
         grid-template-columns: 1fr !important;
-        gap: 10px !important;
-        margin: 14px 0 24px 0 !important;
+        gap: 12px !important;
+        margin: 18px 0 24px 0 !important;
     }
     
     /* Benefit items */
     #promo-popup-overlay > div > div > div:last-child > div > div {
-        padding: 8px 0;
+        display: flex !important;
+        align-items: center !important;
+        padding: 0 !important;
     }
     
+    /* Checkmark circles */
+    #promo-popup-overlay > div > div > div:last-child > div > div > div {
+        width: 22px !important;
+        height: 22px !important;
+        min-width: 22px !important;
+        margin-right: 12px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    #promo-popup-overlay > div > div > div:last-child > div > div > div svg {
+        width: 12px !important;
+        height: 12px !important;
+    }
+    
+    /* Benefit text */
     #promo-popup-overlay > div > div > div:last-child > div > div span {
-        font-size: 13px !important;
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+        font-weight: 500 !important;
     }
     
     /* CTA button */
     #promo-popup-overlay > div > div > div:last-child button {
-        padding: 13px 16px !important;
+        padding: 14px 20px !important;
         font-size: 15px !important;
+        border-radius: 10px !important;
+        width: 100% !important;
+        font-weight: 600 !important;
     }
     
-    /* Small text below button */
+    /* Fine print */
     #promo-popup-overlay > div > div > div:last-child > p:last-of-type {
         font-size: 11px !important;
-        margin-top: 10px !important;
+        margin: 12px 0 0 0 !important;
+        text-align: center !important;
+        color: #9ca3af !important;
     }
     
-    /* Close button adjustments */
+    /* Close button - FIXED at top right */
     #promo-popup-overlay > div > button {
-        top: 12px !important;
-        right: 12px !important;
-        width: 32px !important;
-        height: 32px !important;
-        font-size: 20px !important;
+        position: fixed !important;
+        top: 30px !important;
+        right: 20px !important;
+        width: 36px !important;
+        height: 36px !important;
+        font-size: 24px !important;
+        background: rgba(0,0,0,0.85) !important;
+        color: white !important;
+        z-index: 999999 !important;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.5) !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        line-height: 1 !important;
+        padding: 0 !important;
+        border: 2px solid rgba(255,255,255,0.3) !important;
+    }
+    
+    /* Progress bar */
+    #promo-popup-overlay > div > #popup-progress {
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 3px !important;
+    }
+    
+    #promo-popup-overlay > div > #popup-progress-bar {
+        height: 100% !important;
     }
 }
 
-/* Extra small screens */
+/* Small screens */
 @media (max-width: 480px) {
-    #promo-popup-overlay > div {
-        max-width: 96% !important;
+    #promo-popup-overlay {
+        padding: 15px 0 !important;
     }
     
-    #promo-popup-overlay > div > div > div:first-child,
-    #promo-popup-overlay > div > div > div:last-child {
-        padding: 25px 20px !important;
+    #promo-popup-overlay > div {
+        max-width: 94% !important;
+        margin: 15px auto !important;
+    }
+    
+    #promo-popup-overlay > div > div > div:first-child {
+        padding: 20px 18px 18px 18px !important;
     }
     
     #promo-popup-overlay > div > div > div:first-child h2 {
         font-size: 16px !important;
     }
     
-    #promo-popup-overlay > div > div > div:last-child h3 {
-        font-size: 17px !important;
+    #promo-popup-overlay > div > div > div:last-child {
+        padding: 20px 18px 24px 18px !important;
     }
     
-    #promo-popup-overlay > div > div > div:last-child button {
-        font-size: 14px !important;
-        padding: 12px 16px !important;
+    #promo-popup-overlay > div > div > div:last-child h3 {
+        font-size: 18px !important;
+    }
+    
+    #promo-popup-overlay > div > button {
+        top: 25px !important;
+        right: 15px !important;
     }
 }
 
-/* Prevent body scroll when popup is open */
+/* Prevent body scroll when popup open */
 body.popup-open {
     overflow: hidden !important;
 }
@@ -793,7 +901,10 @@ body.popup-open {
                                 <div class="top-bar-left">
                                     <a href="{{url('postmgt')}}" class="cp-default-btn d-lg-none">Post Your Ad</a>
                                     <p class="d-none d-lg-block">
-                                       +25478 199990 or mail@TheHub
+                                       +25478 199990
+                                    </p>
+                                    <p class="d-none d-lg-block">
+                                       info@thehub.co.ke
                                     </p>
                                 </div>
                             </div>
@@ -822,11 +933,7 @@ body.popup-open {
                                                 </form>
                                             </li>
                                         @endguest
-                                        <li class="hidden-mb">
-                                            <a class="login-btn" href="#" id="login-button">
-                                                <i class="fa fa-comments-o" aria-hidden="true"></i>Live Chat
-                                            </a>
-                                        </li>
+                                     
                                     </ul>
                                 </div>
                             </div>
