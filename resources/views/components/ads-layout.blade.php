@@ -32,13 +32,14 @@
 function showPopup() {
     const popup = document.getElementById('promo-popup-overlay');
     popup.style.display = 'flex';
+    document.body.classList.add('popup-open'); // Prevent scroll
     
     // Start progress bar
     setTimeout(() => {
         const progressBar = document.getElementById('popup-progress-bar');
         let width = 0;
         const interval = setInterval(() => {
-            width += 0.67; // 8 seconds total (100/1.25 = 80 intervals, 80*100ms = 8000ms)
+            width += 0.67;
             progressBar.style.width = width + '%';
             
             if (width >= 100) {
@@ -50,19 +51,18 @@ function showPopup() {
         popup.progressInterval = interval;
     }, 500);
 }
-
 function closePopup() {
     const popup = document.getElementById('promo-popup-overlay');
     if (popup.progressInterval) {
         clearInterval(popup.progressInterval);
     }
     popup.style.display = 'none';
+    document.body.classList.remove('popup-open'); // Re-enable scroll
 }
 
 function claimOffer() {
     closePopup();
-    // Add analytics tracking here if needed
-    window.location.href = 'post-ad.html';
+    window.location.href = '{{ url("postmgt") }}';
 }
 
 // Show popup after 3 seconds
@@ -641,6 +641,138 @@ document.addEventListener('click', function(e) {
 
 .mean-container .mean-nav {
     animation: slideInMenu 0.3s ease;
+}
+/* Mobile-Friendly Popup Styles */
+@media (max-width: 768px) {
+    /* Popup overlay adjustments */
+    #promo-popup-overlay > div {
+        max-width: 95% !important;
+        margin: 0 10px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    /* Change to vertical stacked layout */
+    #promo-popup-overlay > div > div {
+        flex-direction: column !important;
+        min-height: auto !important;
+    }
+    
+    /* Left side (green section) - full width on mobile */
+    #promo-popup-overlay > div > div > div:first-child {
+        flex: 1 1 auto !important;
+        width: 100% !important;
+        padding: 30px 25px !important;
+    }
+    
+    /* Adjust icon size */
+    #promo-popup-overlay > div > div > div:first-child > div:first-child {
+        width: 40px !important;
+        height: 40px !important;
+        margin: 0 0 16px 0 !important;
+    }
+    
+    #promo-popup-overlay > div > div > div:first-child > div:first-child svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    /* Heading adjustments */
+    #promo-popup-overlay > div > div > div:first-child h2 {
+        font-size: 18px !important;
+    }
+    
+    #promo-popup-overlay > div > div > div:first-child p {
+        font-size: 13px !important;
+    }
+    
+    /* Trust indicators */
+    #promo-popup-overlay > div > div > div:first-child > div:last-child {
+        margin-top: 20px !important;
+        padding-top: 16px !important;
+    }
+    
+    /* Right side (content) */
+    #promo-popup-overlay > div > div > div:last-child {
+        padding: 30px 25px !important;
+    }
+    
+    #promo-popup-overlay > div > div > div:last-child h3 {
+        font-size: 18px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    #promo-popup-overlay > div > div > div:last-child > p:first-of-type {
+        font-size: 14px !important;
+        margin-bottom: 14px !important;
+    }
+    
+    /* Benefits grid - single column on mobile */
+    #promo-popup-overlay > div > div > div:last-child > div {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        margin: 14px 0 24px 0 !important;
+    }
+    
+    /* Benefit items */
+    #promo-popup-overlay > div > div > div:last-child > div > div {
+        padding: 8px 0;
+    }
+    
+    #promo-popup-overlay > div > div > div:last-child > div > div span {
+        font-size: 13px !important;
+    }
+    
+    /* CTA button */
+    #promo-popup-overlay > div > div > div:last-child button {
+        padding: 13px 16px !important;
+        font-size: 15px !important;
+    }
+    
+    /* Small text below button */
+    #promo-popup-overlay > div > div > div:last-child > p:last-of-type {
+        font-size: 11px !important;
+        margin-top: 10px !important;
+    }
+    
+    /* Close button adjustments */
+    #promo-popup-overlay > div > button {
+        top: 12px !important;
+        right: 12px !important;
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 20px !important;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    #promo-popup-overlay > div {
+        max-width: 96% !important;
+    }
+    
+    #promo-popup-overlay > div > div > div:first-child,
+    #promo-popup-overlay > div > div > div:last-child {
+        padding: 25px 20px !important;
+    }
+    
+    #promo-popup-overlay > div > div > div:first-child h2 {
+        font-size: 16px !important;
+    }
+    
+    #promo-popup-overlay > div > div > div:last-child h3 {
+        font-size: 17px !important;
+    }
+    
+    #promo-popup-overlay > div > div > div:last-child button {
+        font-size: 14px !important;
+        padding: 12px 16px !important;
+    }
+}
+
+/* Prevent body scroll when popup is open */
+body.popup-open {
+    overflow: hidden !important;
 }
 </style>
     <!--[if lt IE 8]>
